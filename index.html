@@ -16,17 +16,14 @@
       flex-direction: column;
     }
 
-    /* Logo (top-left, outside banner) */
     .logo {
       position: absolute;
       top: 15px;
       left: 20px;
       height: 60px;
     }
-
-    /* Banner */
     .banner {
-      background-color: #0F1C8E; /* Navy blue */
+      background-color: #0F1C8E; 
       color: #ffffff;
       padding: 25px 20px;
       text-align: center;
@@ -38,7 +35,6 @@
       font-weight: bold;
     }
 
-    /* Main content */
     .content {
       flex: 1;
       display: flex;
@@ -91,24 +87,21 @@
 </head>
 <body>
 
-  <!-- Logo -->
-  <!-- 🔧 Replace logo.png with your actual logo file -->
   <img src="OCC-Logo-White.jpg" alt="OCC Logo" class="logo" />
 
-  <!-- Banner -->
   <div class="banner">
     <h1>Optimum Controls Corporation</h1>
   </div>
 
-  <!-- Main content -->
+  
   <div class="content">
     <div id="statusText" class="status-text"></div>
     <div id="datetime" class="datetime"></div>
   </div>
 
   <script>
-    // 🔧 CHANGE THIS TO true OR false
-    const officeOpen = false;
+    //CHANGE THIS TO true OR false
+    const officeOpen = true;
 
     const statusTextEl = document.getElementById("statusText");
     const datetimeEl = document.getElementById("datetime");
@@ -144,5 +137,6 @@
 
 </body>
 </html>
+
 
 
