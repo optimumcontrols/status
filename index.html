@@ -24,8 +24,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 16px;
       gap: 12px;
+      padding: 16px;
     }
 
     .logo {
@@ -73,7 +73,17 @@
       color: #555;
     }
 
-    /* MOBILE FIXES */
+    .warning-icon {
+      font-size: clamp(4rem, 15vw, 8rem);
+      margin-bottom: 24px;
+    }
+
+    .message-text {
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      max-width: 900px;
+      line-height: 1.4;
+    }
+
     @media (max-width: 600px) {
       .header {
         flex-direction: column;
@@ -86,10 +96,6 @@
       .header h1 {
         white-space: normal;
       }
-
-      .content {
-        padding: 20px;
-      }
     }
   </style>
 </head>
@@ -101,17 +107,39 @@
   </div>
 
   <div class="content">
-    <div id="statusText" class="status-text"></div>
-    <div id="lastUpdated" class="updated"></div>
+
+    <div id="messageMode" style="display:none;">
+      <div class="warning-icon">⚠️</div>
+      <div class="message-text">
+        <strong>MESSAGE:</strong><br /><br />
+        Please check back on Sunday night for work status for Monday.
+      </div>
+    </div>
+
+    <div id="normalMode" style="display:none;">
+      <div id="statusText" class="status-text"></div>
+      <div id="lastUpdated" class="updated"></div>
+    </div>
+
   </div>
 
   <script>
-    // stuff to edit
-    const officeOpen = true;
-    const officeDateText = "Monday, January 26th";
-    const lastUpdatedText = "January 23, 2026 at 9:15 AM";
-    // end of edit items
 
+    //scren toggle
+
+    const showMessageMode = true; // true shows Warning screen, false shows NORMAL status screen -> (swap to on sunday)
+
+
+    //sdfasxsx
+    
+    const officeOpen = true; // true = OPEN, false = CLOSED
+    const officeDateText = "Monday, January 26th";
+    const lastUpdatedText = "January 25, 2026 at 3:15 PM";
+
+ 
+
+    const messageModeEl = document.getElementById("messageMode");
+    const normalModeEl = document.getElementById("normalMode");
     const statusTextEl = document.getElementById("statusText");
     const lastUpdatedEl = document.getElementById("lastUpdated");
 
@@ -127,15 +155,21 @@
     }
 
     function updateLastUpdated() {
-      lastUpdatedEl.textContent = `Updated: ${lastUpdatedText}`;
+      lastUpdatedEl.textContent = `Last updated: ${lastUpdatedText}`;
     }
 
-    updateStatus();
-    updateLastUpdated();
+    if (showMessageMode) {
+      messageModeEl.style.display = "block";
+      normalModeEl.style.display = "none";
+    } else {
+      messageModeEl.style.display = "none";
+      normalModeEl.style.display = "block";
+      updateStatus();
+      updateLastUpdated();
+    }
   </script>
 
 </body>
 </html>
-
 
 
